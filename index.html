@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="openreload">
+  <head>
+    <title>Pulpito</title>
+
+    <!-- Vendor -->
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
+    <!-- App -->
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/models/file.js"></script>
+    <script type="text/javascript" src="js/controllers/main.js"></script>
+    <script type="text/javascript" src="js/controllers/sass_file_list.js"></script>
+    <script type="text/javascript" src="js/directives/folder_picker.js"></script>
+  </head>
+  <body ng-controller="MainCtrl">
+    <div class="menu">
+      <div class="menu-pick-folder" ng-show="folder == null">
+        <folder-picker on-select="setFolder"></folder-picker>
+      </div>
+      <div class="menu-folder-info" ng-show="folder != null">
+        <strong>Picked <span>{{folder}}</span></strong>
+        <ul>
+          <li><a ng-href="#/sass">SASS</a></li>
+          <li><a ng-href="#/less">LESS</a></li>
+          <li><a ng-href="#/coffee">Coffeescript</a></li>
+          <li><a ng-href="#/typescript">Typescript</a></li>
+        </ul>
+        <div class="button">Start server</div>
+      </div>
+    </div>
+    <div class="file-lists">
+      <div ng-view></div>
+    </div>
+  </body>
+</html>

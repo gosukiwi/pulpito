@@ -1,0 +1,29 @@
+{
+  "name": "openreload",
+  "version": "0.0.0",
+  "authors": [
+    "Federico Ramirez <fedekiller@gmail.com>"
+  ],
+  "description": "Easy-peasy asset management",
+  "keywords": [
+    "asset",
+    "management",
+    "sass",
+    "less",
+    "coffeescript",
+    "typescript",
+    "livereload"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "angular": "~1.3.15"
+  }
+}
