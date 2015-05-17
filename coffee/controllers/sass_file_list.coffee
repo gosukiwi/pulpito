@@ -1,6 +1,4 @@
-app.controller 'SassFileListCtrl', ['$scope', 'File', ($scope, File) ->
-  glob = require('glob')
-
+app.controller 'SassFileListCtrl', ['$scope', 'File', 'Glob', ($scope, File, glob) ->
   $scope.files = []
 
   $scope.$watch 'folder', (folder) ->
