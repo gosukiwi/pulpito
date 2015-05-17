@@ -1,4 +1,4 @@
-app.controller 'SassFileListCtrl', ['$scope', 'File', 'Glob', 'Watch', 'Sass', 'Fs', ($scope, File, glob, watcher, sass, fs) ->
+app.controller 'SassFileListCtrl', ['$scope', 'File', 'Glob', 'Watch', 'Sass', 'FileWriter', ($scope, File, glob, watcher, sass, writer) ->
   $scope.files = []
 
   handleError = (err) ->
@@ -14,10 +14,12 @@ app.controller 'SassFileListCtrl', ['$scope', 'File', 'Glob', 'Watch', 'Sass', '
       sourceMap: true
     , (err, result) ->
       return handleError(err) if err
-      fs.mkdir outfile.dirname, '0777', (err, res) ->
-        return handleError(err) if err && err.code != 'EEXIST'
-        fs.writeFile outfile.fullpath, result.css, 0, result.css.length
-        fs.writeFile outfile.fullpath + '.map', result.map, 0, result.map.length
+      mapfile = new File(outfile.fullpath + ".map")
+      writer [
+        { file: outfile, buffer: result.css },
+        { file: mapfile, buffer: result.map }
+      ], (err) ->
+        handleError(err) if err
 
   $scope.$watch 'folder', (folder) ->
     glob "#{folder}/**/*.sass", (er, files) ->
