@@ -1,6 +1,6 @@
-app.factory 'FileWriter', ['Fs', (fs) ->
+app.factory 'FileWriter', ['Fs', 'Mkdirp', (fs, mkdirp) ->
   writeFile = (file, buffer, handleError) ->
-    fs.mkdir file.dirname, '0777', (err, res) ->
+    mkdirp file.dirname, (err, res) ->
       return handleError(err) if err && err.code != 'EEXIST'
       fs.writeFile file.fullpath, buffer, 0, buffer.length, (err) ->
         handleError(err) if err
