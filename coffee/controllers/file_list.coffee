@@ -1,12 +1,12 @@
 app.controller 'FileListCtrl', ['$scope', 'SassWatcher', ($scope, SassWatcher) ->
   $scope.files    = []
   sassWatcher     = null
-  fileListChanged = (files) ->
+  onFileWatched = (files) ->
     $scope.files.push(f) for f in files
     $scope.$apply()
 
   initialize = ->
-    sassWatcher = new SassWatcher(fileListChanged)
+    sassWatcher = new SassWatcher(onFileWatched)
   initialize()
 
   $scope.$watch 'folder', (folder) ->
