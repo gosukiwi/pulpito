@@ -17,16 +17,17 @@ module.exports = (grunt) ->
         force: true
         src: ['js', 'css']
     watch:
+      options:
+        spawn: false
       scripts:
         files: ['coffee/**/*.coffee']
         tasks: ['coffee:compile', 'includeSource']
-        options:
-          spawn: false
       styles:
         files: ['sass/**/*.sass']
         tasks: ['sass:compile', 'includeSource']
-        options:
-          spawn: false
+      html:
+        files: ['index.dev.html']
+        tasks: ['includeSource']
     includeSource:
       build:
         files:
