@@ -1,5 +1,5 @@
 <h1>This is a list of watched files</h1>
 
 <ul>
-  <li ng-repeat="file in files">{{file.filename}} ({{file.relativepath}})</li>
+  <li ng-click="setCurrentFile(file)" ng-repeat="file in files">{{file.filename}} ({{file.relativepath}})</li>
 </ul>

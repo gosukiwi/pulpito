@@ -1,7 +1,10 @@
 app.controller 'FileListCtrl', ['$scope', 'SassWatcher', 'CoffeeWatcher', ($scope, SassWatcher, CoffeeWatcher) ->
-  $scope.files  = []
-  sassWatcher   = null
-  coffeeWatcher = null
+  $scope.files       = []
+  $scope.currentFile = null
+
+  sassWatcher        = null
+  coffeeWatcher      = null
+
   onFileWatched = (files) ->
     $scope.files.push(f) for f in files
     $scope.$apply()
@@ -15,4 +18,7 @@ app.controller 'FileListCtrl', ['$scope', 'SassWatcher', 'CoffeeWatcher', ($scop
     return unless folder
     sassWatcher.watch folder
     coffeeWatcher.watch folder
+
+  $scope.setCurrentFile = (file) ->
+    $scope.currentFile = file
 ]

@@ -32,16 +32,12 @@
       </div>
       <div class="menu-folder-info" ng-show="folder != null">
         <strong>Picked <span>{{folder}}</span></strong>
-        <ul>
-          <li><a ng-href="#/sass">SASS</a></li>
-          <li><a ng-href="#/less">LESS</a></li>
-          <li><a ng-href="#/coffee">Coffeescript</a></li>
-          <li><a ng-href="#/typescript">Typescript</a></li>
-        </ul>
         <div class="button">Start server</div>
       </div>
     </div>
-    <div class="file-lists" ng-include="'templates/file_list.html'" ng-controller="FileListCtrl">
+    <div class="files-container" ng-controller="FileListCtrl">
+      <div class="file-lists" ng-include="'templates/file_list.html'"></div>
+      <div class="file-settings" ng-include="'templates/file_settings.html'"></div>
     </div>
   </body>
 </html>
