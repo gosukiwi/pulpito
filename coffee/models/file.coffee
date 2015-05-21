@@ -13,9 +13,10 @@ app.factory 'File', ['SassFileSettings', 'CoffeeFileSettings', (SassFileSettings
       else
         fullPath
 
-      # Set up the appropriate settings for this file
+      # Set up the appropriate settings for this file if available
       settings =
         sass:   SassFileSettings
+        scss:   SassFileSettings
         coffee: CoffeeFileSettings
-      @settings = new settings[@extension](@, cwd)
+      @settings = new settings[@extension](@, cwd) if settings[@extension]
 ]

@@ -1,4 +1,5 @@
-<h3 ng-hide="files.length">Could not find any relevant files in this folder.</h3>
+<h3 ng-if="currentFolder == null">Please select a folder.</h3>
+<h3 ng-if="currentFolder != null && files.length == 0">Could not find any relevant files in this folder.</h3>
 
 <ul ng-show="files.length">
   <li ng-click="setCurrentFile(file)" ng-repeat="file in files">{{file.filename}} ({{file.relativepath}})</li>

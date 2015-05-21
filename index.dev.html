@@ -19,18 +19,22 @@
   <body class="app-container" ng-controller="MainCtrl">
     <div class="app-menu">
       <h3>Monitored Folders</h3>
-      <div class="menu-pick-folder" ng-show="folder == null">
-        <folder-picker on-select="setFolder"></folder-picker>
-      </div>
-      <div class="menu-folder-info" ng-show="folder != null">
+      <div class="menu-folder-info" ng-show="folders.length">
         <ul class="folder-list">
-          <li class="">{{folder}}</li>
+          <li
+            ng-click="selectFolder(folder)"
+            ng-repeat="folder in folders"
+            ng-class="{selected: currentFolder == folder}"
+          >{{folder}}</li>
         </ul>
         <div class="button">Start server</div>
       </div>
+      <div class="menu-pick-folder">
+        <folder-picker on-select="addFolder"></folder-picker>
+      </div>
     </div>
     <div class="app-files" ng-controller="FileListCtrl">
-      <div class="file-list" ng-class="compressed: currentFile" ng-include="'templates/file_list.html'"></div>
+      <div class="file-list" ng-class="{compressed: currentFile}" ng-include="'templates/file_list.html'"></div>
       <div class="file-settings" ng-show="currentFile" ng-include="'templates/file_settings.html'"></div>
     </div>
   </body>

@@ -1,7 +1,11 @@
 app.controller 'MainCtrl', ['$scope',  ($scope) ->
-  $scope.folder = null
+  $scope.folders       = []
+  $scope.currentFolder = null
 
-  $scope.setFolder = (path) ->
-    $scope.folder = path.replace(/\\/g, '/')
+  $scope.selectFolder = (folder) ->
+    $scope.currentFolder = folder
+
+  $scope.addFolder = (path) ->
+    $scope.folders.push path.replace(/\\/g, '/')
     $scope.$apply()
 ]

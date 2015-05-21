@@ -35,7 +35,9 @@ app.factory 'SassWatcher', ['Glob', 'Watch', 'Sass', 'FileWriter', 'File', (glob
     watch: (folder, err) ->
       @folder = folder
       @error  = err
-      glob "#{folder}/**/*.@(sass|scss)", (err, files) =>
+      # This glob is kind of complicated. First, it ignores files starting with
+      # underscore, then it also matches files ending with either .sass or .scss
+      glob "#{folder}/**/[!_]*.@(sass|scss)", (err, files) =>
         return @handleError(err) if err
         watcher files, $.proxy(@onFileChanged, @)
         @onChanged (new File(f, @folder) for f in files)

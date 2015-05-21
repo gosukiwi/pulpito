@@ -14,8 +14,10 @@ app.controller 'FileListCtrl', ['$scope', 'SassWatcher', 'CoffeeWatcher', ($scop
     coffeeWatcher = new CoffeeWatcher(onFileWatched)
   initialize()
 
-  $scope.$watch 'folder', (folder) ->
+  $scope.$watch 'currentFolder', (folder) ->
     return unless folder
+    $scope.files = []
+    $scope.currentFile = null
     sassWatcher.watch folder
     coffeeWatcher.watch folder
 
