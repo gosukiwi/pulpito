@@ -30,7 +30,7 @@ module.exports = (grunt) ->
     includeSource:
       build:
         files:
-          'index.html': 'index.tpl.html'
+          'index.html': 'index.dev.html'
 
 
   grunt.loadNpmTasks 'grunt-contrib-clean'
