@@ -1,6 +1,9 @@
 <h1>Settings</h1>
-<ul ng-if="currentFile">
-  <li ng-repeat="(name, value) in currentFile.settings">
-    {{name}}: {{value}}
-  </li>
-</ul>
+<div ng-if="currentFile">
+  <h2>{{currentFile.relativepath}}</h2>
+  <ul>
+    <li ng-repeat="(name, value) in currentFile.settings">
+      {{name}}: {{value}}
+    </li>
+  </ul>
+</div>
