@@ -8,8 +8,7 @@ app.factory 'CoffeeWatcher', ['Glob', 'Watch', 'Coffee', 'File', 'Fs', 'FileWrit
       @onChanged = onChanged
 
     handleError: (err) ->
-      console.log err
-      #@error(err) unless @error is null
+      @error(err) unless @error is null
 
     onFileChanged: (sourcefile) ->
       outfile = sourcefile.replace(/coffee/g, 'js')
@@ -23,10 +22,8 @@ app.factory 'CoffeeWatcher', ['Glob', 'Watch', 'Coffee', 'File', 'Fs', 'FileWrit
           #sourceFiles: [@folder]
 
     compile: (data, options) ->
-      console.log 'Compile', data, 'with opts', options
       try
         js = coffee.compile(data, options)
-        console.log 'Write', js
         writer [
           { file: new File(options.generatedFile, @folder), buffer: new Buffer(js) }
         ], (err) =>
