@@ -3,6 +3,8 @@
   <head>
     <title>Pulpito</title>
 
+    <link rel="stylesheet" href="css/main.css">
+
     <!-- Vendor -->
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="bower_components/angular/angular.js"></script>
@@ -14,19 +16,22 @@
     <!-- include: "type": "js", "files": "js/controllers/**/*.js" -->
     <!-- include: "type": "js", "files": "js/directives/**/*.js" -->
   </head>
-  <body ng-controller="MainCtrl">
-    <div class="menu">
+  <body class="app-container" ng-controller="MainCtrl">
+    <div class="app-menu">
+      <h3>Monitored Folders</h3>
       <div class="menu-pick-folder" ng-show="folder == null">
         <folder-picker on-select="setFolder"></folder-picker>
       </div>
       <div class="menu-folder-info" ng-show="folder != null">
-        <strong>Picked <span>{{folder}}</span></strong>
+        <ul class="folder-list">
+          <li class="">{{folder}}</li>
+        </ul>
         <div class="button">Start server</div>
       </div>
     </div>
-    <div class="files-container" ng-controller="FileListCtrl">
-      <div class="file-lists" ng-include="'templates/file_list.html'"></div>
-      <div class="file-settings" ng-include="'templates/file_settings.html'"></div>
+    <div class="app-files" ng-controller="FileListCtrl">
+      <div class="file-list" ng-class="compressed: currentFile" ng-include="'templates/file_list.html'"></div>
+      <div class="file-settings" ng-show="currentFile" ng-include="'templates/file_settings.html'"></div>
     </div>
   </body>
 </html>

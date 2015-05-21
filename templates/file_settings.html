@@ -1,6 +1,6 @@
-<h1>Settings</h1>
+<h3>{{currentFile.filename}} settings</h3>
+<div ng-click="setCurrentFile(null)" class="close-button">&times;</div>
 <div ng-if="currentFile">
-  <h2>{{currentFile.relativepath}}</h2>
   <ul>
     <li ng-repeat="(name, value) in currentFile.settings">
       {{name}}: {{value}}

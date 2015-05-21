@@ -1,5 +1,5 @@
-<h1>This is a list of watched files</h1>
+<h3 ng-hide="files.length">Could not find any relevant files in this folder.</h3>
 
-<ul>
+<ul ng-show="files.length">
   <li ng-click="setCurrentFile(file)" ng-repeat="file in files">{{file.filename}} ({{file.relativepath}})</li>
 </ul>
