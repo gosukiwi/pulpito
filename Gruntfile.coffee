@@ -19,18 +19,24 @@ module.exports = (grunt) ->
     watch:
       scripts:
         files: ['coffee/**/*.coffee']
-        tasks: ['coffee:compile']
+        tasks: ['coffee:compile', 'includeSource']
         options:
           spawn: false
       styles:
         files: ['sass/**/*.sass']
-        tasks: ['sass:compile']
+        tasks: ['sass:compile', 'includeSource']
         options:
           spawn: false
+    includeSource:
+      build:
+        files:
+          'index.html': 'index.tpl.html'
+
 
   grunt.loadNpmTasks 'grunt-contrib-clean'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-sass'
   grunt.loadNpmTasks 'grunt-contrib-watch'
+  grunt.loadNpmTasks 'grunt-include-source'
 
-  grunt.registerTask 'default', ['clean', 'coffee', 'sass', 'watch']
+  grunt.registerTask 'default', ['clean', 'coffee', 'sass', 'includeSource', 'watch']
